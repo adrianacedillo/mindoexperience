@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cacao Ecuatoriano · Mindo Maya Chocolate Tour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf3e6;--card:#fffaf1;--ink:#2b160b;--mute:#76584a;--brand:#4a2010;--gold:#d79a3c;--leaf:#3f7a45;--line:#ead8bf;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#170d08;--card:#25160e;--ink:#f7eadb;--mute:#c9b09a;--brand:#f0b66a;--gold:#e8ac55;--leaf:#8fd08a;--line:#41291a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#170d08;--card:#25160e;--ink:#f7eadb;--mute:#c9b09a;--brand:#f0b66a;--gold:#e8ac55;--leaf:#8fd08a;--line:#41291a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--gold),var(--leaf));z-index:20}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:10;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:10px;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+nav a{color:var(--brand);text-decoration:none;font-size:.85rem;font-weight:600;padding:6px 14px;border-radius:999px;transition:.25s}
+nav a:hover{background:var(--gold);color:#2b160b}
+.hero{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;padding:110px 20px 60px;color:#fdeed8;overflow:hidden;background:radial-gradient(circle at 30% 20%,#8a4a20,transparent 55%),radial-gradient(circle at 80% 80%,#3f7a45,transparent 50%),#2a1208}
+.bean{position:absolute;font-size:2rem;opacity:.25;animation:float 9s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-40px) rotate(25deg)}}
+.hero small{letter-spacing:.35em;text-transform:uppercase;color:#f4c98a;font-size:.8rem}
+.hero h1{font-size:clamp(2.8rem,10vw,6rem);line-height:1;margin:.25em 0;font-weight:900}
+.hero h1 span{background:linear-gradient(90deg,#f4c98a,#d79a3c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:600px;margin:0 auto 1.8em;font-size:1.1rem;color:#f1dcc0}
+.btn{display:inline-block;background:var(--gold);color:#2b160b;padding:13px 30px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:.25s;box-shadow:0 8px 24px #0004}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.scroll{position:absolute;bottom:20px;left:50%;font-size:1.6rem;animation:bounce 1.8s infinite}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+section{max-width:1000px;margin:0 auto;padding:80px 20px}
+h2{font-size:clamp(2rem,6vw,3rem);color:var(--brand);margin-bottom:.3em}
+.lead{color:var(--mute);max-width:660px}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+.stats{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:30px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;text-align:center}
+.stat b{display:block;font-family:"Playfair Display",serif;font-size:2.8rem;color:var(--leaf)}
+.stat span{color:var(--mute);font-size:.9rem}
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:30px}
+.flip{perspective:900px;height:210px;cursor:pointer}
+.flip>div{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.flip:hover>div,.flip.on>div{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.front{background:var(--card);border:1px solid var(--line)}
+.front i{font-style:normal;font-size:2.6rem}
+.front h3{color:var(--brand);font-size:1.2rem;margin-top:6px}
+.back{background:linear-gradient(145deg,#4a2010,#7a3c18);color:#fdeed8;transform:rotateY(180deg);font-size:.93rem}
+.band{background:var(--card);border-block:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 16px}
+.tab{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px 16px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:600;transition:.25s}
+.tab.act{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;min-height:170px}
+.panel .big{font-size:4.5rem;animation:pop .5s}
+@keyframes pop{from{transform:scale(.4) rotate(-20deg);opacity:0}}
+.panel h3{color:var(--brand);font-size:1.6rem}
+.panel p{margin:.3em 0 0;color:var(--mute)}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;margin-top:28px}
+.quiz h3{font-size:1.4rem;color:var(--brand);margin-bottom:14px}
+.opt{display:block;width:100%;text-align:left;padding:12px 16px;margin:8px 0;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:inherit;font-size:1rem;cursor:pointer;transition:.2s}
+.opt:hover{border-color:var(--gold);transform:translateX(4px)}
+.opt.ok{background:#3f7a45;color:#fff;border-color:#3f7a45}
+.opt.no{background:#a63d2a;color:#fff;border-color:#a63d2a}
+.prog{color:var(--mute);font-size:.85rem;margin-bottom:6px}
+.video{margin-top:26px;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#2a1208,#7a3c18);display:grid;place-items:center;text-align:center;color:#fdeed8;box-shadow:0 20px 50px #0004}
+.video iframe{width:100%;height:100%;border:0}
+.row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+input{flex:1;min-width:220px;padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1rem;font-family:inherit}
+footer{text-align:center;padding:40px 20px;color:var(--mute);font-size:.9rem}
+@media(max-width:560px){.panel{grid-template-columns:1fr;text-align:center}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><a href="#inicio">Inicio</a><a href="#datos">Datos</a><a href="#proceso">Proceso</a><a href="#quiz">Quiz</a><a href="#vlog">Mi vlog</a></nav>
+
+<header class="hero" id="inicio">
+  <div id="beans"></div>
+  <div>
+    <small>Ecuador · Mindo · Chocolate</small>
+    <h1>Cacao <span>Ecuatoriano</span></h1>
+    <p>Del bosque nublado de Mindo a tu paladar: así se vive el chocolate en el Mindo Maya Chocolate Tour.</p>
+    <a class="btn" href="#vlog">▶ Ver mi vlog</a>
+  </div>
+  <div class="scroll">⌄</div>
+</header>
+
+<section id="datos">
+  <h2 class="reveal">El oro oscuro del Ecuador</h2>
+  <p class="lead reveal">Ecuador es reconocido por su cacao fino de aroma, muy buscado por chocolateros del mundo. Toca las tarjetas para descubrir más.</p>
+  <div class="stats reveal">
+    <div class="stat"><b data-n="5000">0</b><span>años de historia del cacao en la Amazonía</span></div>
+    <div class="stat"><b data-n="60" data-s="%">0</b><span>aprox. del cacao fino de aroma del mundo viene de Ecuador*</span></div>
+    <div class="stat"><b data-n="3">0</b><span>regiones productoras: Costa, Amazonía y Andes</span></div>
+  </div>
+  <div class="cards">
+    <div class="flip reveal"><div><div class="face front"><i>🌸</i><h3>Fino de aroma</h3></div><div class="face back">La variedad Nacional destaca por sus notas florales y frutales.</div></div></div>
+    <div class="flip reveal"><div><div class="face front"><i>🌿</i><h3>Bosque y sombra</h3></div><div class="face back">Crece junto a otros árboles, ayudando a conservar la biodiversidad.</div></div></div>
+    <div class="flip reveal"><div><div class="face front"><i>🤝</i><h3>Familias</h3></div><div class="face back">Miles de pequeños productores viven del cultivo del cacao.</div></div></div>
+    <div class="flip reveal"><div><div class="face front"><i>☁️</i><h3>Mindo</h3></div><div class="face back">Un bosque nublado lleno de aves, cascadas y chocolate artesanal.</div></div></div>
+  </div>
+  <p class="lead" style="font-size:.8rem;margin-top:18px">*Cifras aproximadas; verifica la fuente antes de exponer.</p>
+</section>
+
+<div class="band"><section id="proceso">
+  <h2 class="reveal">Del árbol a la barra</h2>
+  <p class="lead reveal">Elige cada etapa del proceso:</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="panel" id="panel"></div>
+</section></div>
+
+<section id="quiz">
+  <h2 class="reveal">¿Cuánto aprendiste?</h2>
+  <div class="quiz reveal" id="quizbox"></div>
+</section>
+
+<div class="band"><section id="vlog">
+  <h2 class="reveal">Mi vlog en Mindo</h2>
+  <p class="lead reveal">Pega el enlace de tu video de YouTube y se reproducirá aquí mismo.</p>
+  <div class="video reveal" id="video"><div><div style="font-size:3.5rem">🎬</div><p>Aquí va tu vlog</p></div></div>
+  <div class="row">
+    <input id="url" type="url" placeholder="https://www.youtube.com/watch?v=...">
+    <button class="btn" id="go">Cargar video</button>
+  </div>
+</section></div>
+
+<footer>Hecho con 🤎 para mi clase · Cacao ecuatoriano</footer>
+
+<script>
+// ✏️ Opcional: pon aquí el enlace de tu vlog para que cargue solo
+var VIDEO_URL = "";
+
+// Granos flotantes
+(function(){var b=document.getElementById('beans'),h='';
+for(var i=0;i<14;i++){h+='<span class="bean" style="left:'+(Math.random()*95)+'%;top:'+(Math.random()*90)+'%;animation-delay:'+(Math.random()*8)+'s;font-size:'+(1.2+Math.random()*2)+'rem">'+(i%3?'🫘':'🍫')+'</span>';}
+b.innerHTML=h;})();
+
+// Barra de progreso
+addEventListener('scroll',function(){var d=document.documentElement;
+document.getElementById('bar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';});
+
+// Revelar y contadores
+function count(el){var n=+el.dataset.n,s=el.dataset.s||'',t=0;
+var iv=setInterval(function(){t+=n/50;if(t>=n){t=n;clearInterval(iv);}el.textContent=Math.round(t).toLocaleString('es')+s;},25);}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');
+e.target.querySelectorAll('[data-n]').forEach(count);io.unobserve(e.target);}});},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// Tarjetas giratorias (táctil)
+document.querySelectorAll('.flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('on');});});
+
+// Proceso
+var steps=[
+['🌳','Cosecha','Se cortan a mano las mazorcas maduras del árbol de cacao.'],
+['🫧','Fermentación','Las almendras con su pulpa fermentan varios días y desarrollan su sabor.'],
+['☀️','Secado','Se secan al sol hasta quedar listas para almacenar.'],
+['🔥','Tostado y molienda','El calor activa el aroma; luego se muele hasta obtener pasta de cacao.'],
+['🍫','Chocolate','Se refina, se mezcla y se vierte en moldes. ¡A disfrutar!']];
+var tabs=document.getElementById('tabs'),panel=document.getElementById('panel');
+function show(i){[].forEach.call(tabs.children,function(t,k){t.classList.toggle('act',k===i);});
+panel.innerHTML='<div class="big">'+steps[i][0]+'</div><div><h3>'+(i+1)+'. '+steps[i][1]+'</h3><p>'+steps[i][2]+'</p></div>';}
+steps.forEach(function(s,i){var b=document.createElement('button');b.className='tab';b.textContent=s[1];b.onclick=function(){show(i);};tabs.appendChild(b);});
+show(0);
+
+// Quiz
+var qs=[
+{q:'¿Qué variedad es famosa por su aroma floral en Ecuador?',o:['Nacional','Forastero','Trinitario'],a:0},
+{q:'¿Qué tipo de bosque es Mindo?',o:['Manglar','Bosque nublado','Desierto'],a:1},
+{q:'¿Qué etapa desarrolla gran parte del sabor del cacao?',o:['Fermentación','Empaque','Moldeado'],a:0}];
+var qi=0,score=0,box=document.getElementById('quizbox');
+function ask(){if(qi>=qs.length){box.innerHTML='<h3>¡Terminaste! 🎉</h3><p>Puntaje: <b>'+score+' / '+qs.length+'</b></p><button class="btn" id="re">Repetir</button>';
+document.getElementById('re').onclick=function(){qi=0;score=0;ask();};return;}
+var q=qs[qi];box.innerHTML='<div class="prog">Pregunta '+(qi+1)+' de '+qs.length+'</div><h3>'+q.q+'</h3>';
+q.o.forEach(function(t,i){var b=document.createElement('button');b.className='opt';b.textContent=t;
+b.onclick=function(){var all=box.querySelectorAll('.opt');all.forEach(function(x){x.disabled=true;});
+all[q.a].classList.add('ok');if(i===q.a)score++;else b.classList.add('no');
+setTimeout(function(){qi++;ask();},1100);};box.appendChild(b);});}
+ask();
+
+// Video
+function load(v){var m=v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);var box=document.getElementById('video');
+if(m){box.innerHTML='<iframe src="https://www.youtube.com/embed/'+m[1]+'" allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture"></iframe>';}
+else if(/^https?:\/\//i.test(v)){window.open(v,'_blank','noopener');}}
+document.getElementById('go').onclick=function(){load(document.getElementById('url').value.trim());};
+if(VIDEO_URL)load(VIDEO_URL);
+</script>
+</body>
+</html>
