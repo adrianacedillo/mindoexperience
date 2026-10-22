@@ -347,7 +347,16 @@ footer{text-align:center;padding:40px 20px;color:var(--mute);font-size:.9rem}
     min-height: 190px;
   }
 }
+/* Igualar cada imagen con la altura de su tarjeta */
+#mindo .mindo-photo {
+  height: auto;
+}
 
+#mindo .mindo-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 
 }
 </style>
@@ -542,6 +551,34 @@ var instagramScript = document.createElement('script');
 instagramScript.src = 'https://www.instagram.com/embed.js';
 instagramScript.async = true;
 document.body.appendChild(instagramScript);
+
+ function ajustarAlturasMindo() {
+  const tarjetas = document.querySelectorAll('#mindo .mindo-card');
+  const imagenes = document.querySelectorAll('#mindo .mindo-photo');
+
+  imagenes.forEach((imagen, i) => {
+    if (tarjetas[i]) {
+      imagen.style.height =
+        tarjetas[i].getBoundingClientRect().height + 'px';
+    }
+  });
+}
+
+window.addEventListener('load', ajustarAlturasMindo);
+window.addEventListener('resize', ajustarAlturasMindo);
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(ajustarAlturasMindo);
+}
+
+if ('ResizeObserver' in window) {
+  const observador = new ResizeObserver(ajustarAlturasMindo);
+
+  document.querySelectorAll('#mindo .mindo-card').forEach(tarjeta => {
+    observador.observe(tarjeta);
+  });
+} 
+  
 </script>
 </body>
 </html>
